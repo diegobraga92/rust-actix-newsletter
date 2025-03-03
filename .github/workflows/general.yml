@@ -10,10 +10,6 @@ env:
   APP_USER_PWD: secret
   APP_DB_NAME: newsletter
 
-defaults:
-  run:
-    working-directory: ZeroToProd/zero2prod
-
 jobs:
   test:
     name: Test
