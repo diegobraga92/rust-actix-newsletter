@@ -2,14 +2,14 @@ use crate::domain::SubscriberEmail;
 use secrecy::ExposeSecret;
 use secrecy::{SecretBox, SecretString};
 
-#[derive(serde::Deserialize)]
+#[derive(Clone, serde::Deserialize)]
 pub struct Settings {
     pub database: DatabaseSettings,
     pub application: ApplicationSettings,
     pub email_client: EmailClientSettings,
 }
 
-#[derive(serde::Deserialize)]
+#[derive(Clone, serde::Deserialize)]
 pub struct EmailClientSettings {
     pub base_url: String,
     pub sender_email: String,
@@ -27,16 +27,16 @@ impl EmailClientSettings {
     }
 }
 
-#[derive(serde::Deserialize)]
+#[derive(Clone, serde::Deserialize)]
 pub struct ApplicationSettings {
     pub port: u16,
     pub host: String,
 }
 
-#[derive(serde::Deserialize)]
+#[derive(Clone, serde::Deserialize)]
 pub struct DatabaseSettings {
     pub username: String,
-    pub password: SecretBox<String>,
+    pub password: SecretString,
     pub port: u16,
     pub host: String,
     pub database_name: String,
